@@ -5,6 +5,10 @@
   top: 0;
   z-index: 5;
 
+  img {
+    width: 50px;
+  }
+
   h1 {
     background: linear-gradient(yellow, rgb(233, 233, 194));
     -webkit-background-clip: text;
@@ -13,8 +17,12 @@
   }
 
   .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: ce;
     width: 95%;
     margin: auto;
     max-width: 1000px;
+    gap: 5px;
   }
 }

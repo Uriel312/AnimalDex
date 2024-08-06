@@ -12,6 +12,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
+        <img onClick={goToHome} src="/AnimalDex.png" alt="" />
         <h1 onClick={goToHome}>AnimalDex</h1>
       </div>
     </header>
