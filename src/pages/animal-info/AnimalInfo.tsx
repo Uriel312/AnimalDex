@@ -3,32 +3,22 @@ import { useParams } from 'react-router-dom';
 import { getAnimalByID } from '../../db/db';
 import { AnimalType } from '../../types/Animal';
 import styles from './animal_info.module.css'
+import useTts from '../../hooks/useTts';
+import AudioControls from '../../components/audio-controls/AudioControls';
 
 const AnimalInfo = () => {
   const { id } = useParams();
   const [animal, setAnimal] = useState<AnimalType | null>(null)
+  const ttsAudio = useTts()
 
-
-  useEffect(() => {
-    getAnimal()
-  }, [])
-
-
-  const textSpeach = (text: string) => {
-    const synth = window.speechSynthesis;
-    const audio = new SpeechSynthesisUtterance(text)
-    audio.lang = 'es-ES'
-    const voices = window.speechSynthesis.getVoices()
-    audio.pitch = 0.3
-    audio.rate = 1
-    audio.voice = voices[0]
-    synth.speak(audio)
+  const textSpeach = async (text: string) => {
+    ttsAudio.play(text)
   }
 
   const getAnimal = async () => {
     const response = await getAnimalByID(id as string)
-    setAnimal(response)
 
+    setAnimal(response)
   }
 
   const getHostilityColor = () => {
@@ -42,10 +32,15 @@ const AnimalInfo = () => {
   }
 
   useEffect(() => {
-    if (animal?.description) {
+    if (animal) {
       textSpeach(animal?.description)
     }
   }, [animal])
+
+  useEffect(() => {
+    getAnimal()
+  }, [])
+
 
   return (
     <div className={styles.container}>
@@ -59,14 +54,32 @@ const AnimalInfo = () => {
         <p className={`${styles.badge} ${getHostilityColor()}`}>
           {animal?.hostility_level}
         </p>
+
+        {
+          animal?.poison &&
+          <p className={`${styles.badge} ${styles.purple}`}>
+            Venenoso
+          </p>
+        }
+
+        {
+          animal?.dangerous_to_humans &&
+          <p className={`${styles.badge} ${styles.black}`}>
+            ¡Cuidado 💀!
+          </p>
+        }
+
       </div>
 
 
       <img src={animal?.imagen} alt={animal?.common_name} />
 
-      <div className={styles.names}>
-        <h1 className={styles.title}>{animal?.common_name}</h1>
-        <h3 className={styles.subtitle}>{animal?.scientific_name}</h3>
+      <div className={styles.ggg}>
+        <AudioControls ttsCtrl={ttsAudio} text={animal!.description} />
+        <div className={styles.names}>
+          <h1 className={styles.title}>{animal?.common_name}</h1>
+          <h3 className={styles.subtitle}>{animal?.scientific_name}</h3>
+        </div>
       </div>
 
 
@@ -80,16 +93,22 @@ const AnimalInfo = () => {
           <span>Altura</span>
           {animal?.height}
         </p>
+      </div>
 
+      <div className={styles.info}>
         <p>
-          <span>Velocidad Max</span>
+          <span>Velocidad</span>
           {animal?.max_speed}
         </p>
 
+        <p>
+          <span>Viven</span>
+          {animal?.lifespan}
+        </p>
       </div>
 
       <p>
-        <span>Descripcion</span>
+        <span>Descripción</span>
         {animal?.description}
       </p>
 
@@ -99,7 +118,7 @@ const AnimalInfo = () => {
       </p>
 
       <p>
-        <span>habitat</span>
+        <span>Hábitat</span>
         {animal?.habitat}
       </p>
 
@@ -116,7 +135,7 @@ const AnimalInfo = () => {
         </p>
       </div>
 
-    </div>
+    </div >
   )
 }
 

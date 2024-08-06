@@ -25,7 +25,7 @@
   .names {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 
@@ -35,12 +35,14 @@
     font-style: italic;
     color: gray;
     font-size: 14px;
+    margin-top: -4px;
   }
 
   p {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 850px;
 
     span {
       font-weight: bold;
@@ -53,7 +55,9 @@
   .badges {
     display: flex;
     gap: 5px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
     .red {
       background-color: tomato;
@@ -70,15 +74,32 @@
     .blue {
       background-color: royalblue;
     }
+
+    .purple {
+      background-color: rgb(153, 65, 225);
+    }
+
+    .black {
+      background-color: rgb(107, 105, 109);
+    }
+
+    .badge {
+      display: flex;
+      padding: 5px 10px;
+      width: fit-content;
+      text-align: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+    }
   }
 
-  .badge {
+  .ggg {
     display: flex;
-    padding: 5px 10px;
-    width: fit-content;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 
   .info {
@@ -88,5 +109,18 @@
     color: white;
     max-width: 90%;
     width: 100%;
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    justify-content: space-evenly;
+
+
+    span {
+      font-size: 12px;
+      padding: 0;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgb(0, 255, 221);
+    }
   }
 }

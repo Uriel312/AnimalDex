@@ -22,8 +22,6 @@ const Animals = () => {
   return (
     <>
       <div className={styles.container}>
-
-
         {
 
           animals.length > 0 &&
@@ -34,7 +32,6 @@ const Animals = () => {
               })
             }
           </div>
-
         }
         {
           animals.length == 0 &&

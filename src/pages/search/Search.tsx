@@ -57,16 +57,26 @@ const Search = () => {
     }
   }
 
+  const errors = {
+    "noCameraAccessible": "No se puede acceder al dispositivo de cámara. Por favor, conecta tu cámara o prueba con otro navegador.",
+    "permissionDenied": "Permiso denegado. Por favor, actualiza la página y concede permiso para la cámara.",
+    "switchCamera": "No es posible cambiar a otra cámara porque solo hay un dispositivo de video accesible.",
+    "canvas": "Canvas no es compatible."
+  }
+
   return (
     <>
       <div className={styles.container}>
+
         <div className={styles.camera}>
           {
             !image ?
-              <Camera ref={webcamRef} numberOfCamerasCallback={setNumberOfCameras} facingMode="environment" errorMessages={{}} /> :
+              <Camera ref={webcamRef} numberOfCamerasCallback={setNumberOfCameras} facingMode="environment" errorMessages={errors} /> :
               <img className={styles.img} src={image} alt="" />
           }
         </div>
+
+
 
         <div className={styles.buttons}>
           <button className={styles.back} onClick={back} >

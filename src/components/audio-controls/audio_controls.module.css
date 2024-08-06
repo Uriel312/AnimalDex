@@ -1,0 +1,28 @@
+.controls {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .pause {
+    background-color: red;
+  }
+
+  .play {
+    background-color: royalblue;
+  }
+
+}
