@@ -4,8 +4,6 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
-  height: 100dvh;
-  overflow: hidden;
   margin-top: 65px;
 }
 
@@ -41,6 +39,7 @@
     border-radius: 100%;
     outline-offset: -30px;
     padding: 40px;
+    width: 100%;
   }
 }
 

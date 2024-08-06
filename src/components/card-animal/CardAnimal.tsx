@@ -8,7 +8,6 @@ interface CardAnimalType {
 
 
 const CardAnimal = ({ animal }: CardAnimalType) => {
-    console.log(animal)
     const navigate = useNavigate()
 
     const open = () => {
@@ -28,9 +27,7 @@ const CardAnimal = ({ animal }: CardAnimalType) => {
     return (
         <>
             <div className={styles.card} onClick={open}>
-
                 <img className={`${styles.imagen} ${getHostilityColor()}`} src={animal?.imagen} alt={animal.common_name} />
-
                 <div className={styles.info}>
                     <div>
                         <span className={`${styles.badge} ${getHostilityColor()}`}>

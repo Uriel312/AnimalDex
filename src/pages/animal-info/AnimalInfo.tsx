@@ -19,7 +19,6 @@ const AnimalInfo = () => {
     const audio = new SpeechSynthesisUtterance(text)
     audio.lang = 'es-ES'
     const voices = window.speechSynthesis.getVoices()
-    console.log(voices)
     audio.pitch = 0.3
     audio.rate = 1
     audio.voice = voices[0]

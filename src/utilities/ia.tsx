@@ -58,19 +58,29 @@ const schema = z.object({
 })
 
 export async function getAnimalData(img: string) {
-  const { object } = await generateObject({
-    model: google('models/gemini-1.5-flash-latest'),
-    temperature: 1,
-    schema: schema,
-    mode: 'json',
-    messages: [{
-      role: 'user',
-      content: [
-        { type: 'text', text: `Genera los datos del animal que aparece en la imagen, en idioma español. El campo 'animal_category' debe indicar el tipo del animal, por ejemplo, felino o insecto. Todas las medidas deben estar en el sistema de medidas internacional y abreviadas.` },
-        { type: 'image', image: img }
-      ]
-    }]
-  })
+  try {
+    const { object } = await generateObject({
+      model: google('models/gemini-1.5-flash-latest'),
+      temperature: 1,
+      schema: schema,
+      mode: 'json',
+      messages: [{
+        role: 'user',
+        content: [
+          { type: 'text', text: `Genera los datos del animal que aparece en la imagen, en idioma español. El campo 'animal_category' debe indicar el tipo del animal, por ejemplo, felino o insecto. Todas las medidas deben estar en el sistema de medidas internacional y abreviadas.` },
+          { type: 'image', image: img }
+        ]
+      }]
+    })
 
-  return object
+    return object
+
+  } catch (error) {
+    console.log('error', error)
+    return {
+      error: "ocurrio un error"
+    }
+  }
+
+
 }
