@@ -28,10 +28,8 @@ const Search = () => {
       audio.play();
       const photo = await resizeBase64Image(newImage, 520, 520) as string
       setImage(photo)
-
       modal.open()
       const result = await getAnimalData(photo) as AnimalType
-
       if (result) {
         if (result?.error) {
           modal.close()
@@ -43,7 +41,6 @@ const Search = () => {
           modal.close()
           navigate(`/animalInfo/${result.id}`)
         }
-
       }
       modal.close()
     }

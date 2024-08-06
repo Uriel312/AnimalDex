@@ -17,4 +17,5 @@ export interface AnimalType {
   dangerous_to_humans: boolean;
   imagen: string;
   id: string;
+  error: boolean
 }
