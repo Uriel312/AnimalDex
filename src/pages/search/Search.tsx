@@ -34,6 +34,7 @@ const Search = () => {
         if (result?.error) {
           modal.close()
           modalError.open()
+          setImage(null)
         } else {
           result.id = result.scientific_name.toLocaleLowerCase()
           result.imagen = photo

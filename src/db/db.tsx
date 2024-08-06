@@ -26,7 +26,7 @@ export const addAnimalToDB = async (data: AnimalType): Promise<void> => {
         const db = await openDatabase();
         const transaction = db.transaction(['animals'], 'readwrite');
         const store = transaction.objectStore('animals');
-        const request = await store.add(data);
+        const request = await store.put(data);
 
         return new Promise<void>((resolve, reject) => {
             request.onsuccess = () => {
