@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './card_animal.module.css'
-import { Animal } from '../../assets/types/Animal'
+import { AnimalType } from '../../types/Animal'
 
 interface CardAnimalType {
-    animal: Animal
+    animal: AnimalType
 }
 
 

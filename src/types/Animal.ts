@@ -1,4 +1,4 @@
-export interface Animal {
+export interface AnimalType {
   common_name: string;
   scientific_name: string;
   animal_category: string;

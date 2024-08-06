@@ -1,10 +1,10 @@
-import { Animal } from "../assets/types/Animal";
+import { AnimalType } from "../types/Animal";
 
 const openDatabase = async (): Promise<IDBDatabase> => {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open('animaldex', 1);
 
-        request.onupgradeneeded = (event) => {
+        request.onupgradeneeded = () => {
             const db = request.result;
             if (!db.objectStoreNames.contains('animals')) {
                 db.createObjectStore('animals', { keyPath: 'id', autoIncrement: true });
@@ -21,7 +21,7 @@ const openDatabase = async (): Promise<IDBDatabase> => {
     });
 };
 
-export const addAnimalToDB = async (data: Animal): Promise<void> => {
+export const addAnimalToDB = async (data: AnimalType): Promise<void> => {
     try {
         const db = await openDatabase();
         const transaction = db.transaction(['animals'], 'readwrite');

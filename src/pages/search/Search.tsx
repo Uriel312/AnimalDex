@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { resizeBase64Image } from "../../utilities/utilities";
 import { getAnimalData } from "../../utilities/ia";
 import { addAnimalToDB } from "../../db/db";
+import { AnimalType } from "../../types/Animal";
 
 const Search = () => {
   const webcamRef = useRef<CameraType | null>(null);
@@ -22,7 +23,7 @@ const Search = () => {
       const photo = await resizeBase64Image(newImage, 520, 520) as string
       setImage(photo)
 
-      const result = await getAnimalData(photo)
+      const result = await getAnimalData(photo) as AnimalType
       if (result) {
         result.imagen = photo
         result.id = result.scientific_name.toLocaleLowerCase()
