@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  margin-top: 70px;
+
+  button {
+    background-color: rgb(16, 145, 44);
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+
+    span {
+      font-weight: bold;
+      font-size: 23px;
+      width: 100%;
+      text-align: left;
+    }
+
+  }
+
+}

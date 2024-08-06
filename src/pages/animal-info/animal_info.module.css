@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 70px;
+
+  img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    outline: 3px solid white;
+  }
+
+  .title {}
+
+  .subtitle {
+    font-style: italic;
+    color: gray;
+    font-size: 14px;
+  }
+
+  p {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    span {
+      font-weight: bold;
+      font-size: 20px;
+      padding: 10px 3px;
+    }
+  }
+}
+
+.table1 {
+  margin-top: 20px;
+  column-span: none;
+  border-collapse: collapse;
+
+  th {
+    padding: 10px;
+    border: 1px solid white;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .left {
+    text-align: left;
+  }
+
+}

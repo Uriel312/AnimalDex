@@ -1,4 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+import styles from './home.module.css'
+import { MdOutlinePets, MdOutlineSearch } from "react-icons/md";
+
 
 const Home = () => {
 
@@ -14,10 +17,23 @@ const Home = () => {
 
   return (
     <>
-      <br /><br /><br /><br />
-      <div>Home</div>
-      <button onClick={goToAllAnimals}>Todos los animales</button>
-      <button onClick={goToSearch}>Buscar</button>
+      <div className={styles.container}>
+
+        <p></p>
+
+        <button onClick={goToAllAnimals}>
+          <MdOutlinePets size='40px' />
+          <span>
+            Todos los animales
+          </span>
+        </button>
+        <button onClick={goToSearch}>
+          <MdOutlineSearch size='40px' />
+          <span>
+            Buscar animal
+          </span>
+        </button>
+      </div>
     </>
   )
 }

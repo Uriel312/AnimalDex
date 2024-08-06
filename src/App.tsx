@@ -7,17 +7,7 @@ import AnimalInfo from "./pages/animal-info/AnimalInfo";
 
 function App() {
 
-  // const textSpeach = (text: string) => {
-  //   const synth = window.speechSynthesis;
-  //   const audio = new SpeechSynthesisUtterance(text)
-  //   audio.lang = 'es-ES'
-  //   const voices = window.speechSynthesis.getVoices()
-  //   console.log(voices)
-  //   audio.pitch = 0.3
-  //   audio.rate = 0.9
-  //   audio.voice = voices[0]
-  //   synth.speak(audio)
-  // }
+
 
   return (
     <>

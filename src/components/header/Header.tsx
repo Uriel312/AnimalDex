@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <h1 onClick={goToHome}>Animaldex</h1>
+        <h1 onClick={goToHome}>AnimalDex</h1>
       </div>
     </header>
   )

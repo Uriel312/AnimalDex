@@ -8,8 +8,11 @@ import { resizeBase64Image } from "../../utilities/utilities";
 import { getAnimalData } from "../../utilities/ia";
 import { addAnimalToDB } from "../../db/db";
 import { AnimalType } from "../../types/Animal";
+import Modal from "../../components/modal/Modal";
+import useModal from "../../hooks/useModal";
 
 const Search = () => {
+  const modal = useModal(false)
   const webcamRef = useRef<CameraType | null>(null);
   const [numberOfCameras, setNumberOfCameras] = useState(2);
   const navigate = useNavigate();
@@ -23,13 +26,16 @@ const Search = () => {
       const photo = await resizeBase64Image(newImage, 520, 520) as string
       setImage(photo)
 
+      modal.open()
       const result = await getAnimalData(photo) as AnimalType
       if (result) {
         result.imagen = photo
         result.id = result.scientific_name.toLocaleLowerCase()
         await addAnimalToDB(result)
+        modal.close()
         navigate(`/animalInfo/${result.id}`)
       }
+      modal.close()
     }
   }
 
@@ -64,6 +70,7 @@ const Search = () => {
           </button>
         </div>
       </div>
+      <Modal modalCtrl={modal} width={400} />
     </>
   )
 }

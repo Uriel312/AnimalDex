@@ -23,21 +23,8 @@ const CardAnimal = ({ animal }: CardAnimalType) => {
                     <div>
                         <h1 className={styles.title}>{animal?.common_name}</h1>
                         <p className={styles.subtitle}>{animal?.scientific_name}</p>
-                        <p className={styles.subtitle}>felino</p>
-
+                        <p className={styles.subtitle}>{animal?.animal_category}</p>
                     </div>
-
-                    <div className={styles.data}>
-                        <p>
-                            <span>Peso</span>
-                            {animal?.weight}
-                        </p>
-                        <p>
-                            <span>Velocidad (max)</span>
-                            {animal?.max_speed}
-                        </p>
-                    </div>
-
                 </div>
             </div>
         </>

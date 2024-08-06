@@ -61,7 +61,7 @@ export async function getAnimalData(img: string) {
     messages: [{
       role: 'user',
       content: [
-        { type: 'text', text: `generame los datos del animal que aparece en la imagen, en idioma español` },
+        { type: 'text', text: `generame los datos del animal que aparece en la imagen, en idioma español, el 'animal_category' tiene que ser el tipo del animal por ejemplo felino o insecto, todas las medidas tienen que ser en sistema de medida internacional` },
         { type: 'image', image: img }
       ]
     }]
