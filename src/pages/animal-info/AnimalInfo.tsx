@@ -75,7 +75,7 @@ const AnimalInfo = () => {
       <img src={animal?.imagen} alt={animal?.common_name} />
 
       <div className={styles.ggg}>
-        <AudioControls ttsCtrl={ttsAudio} text={animal!.description} />
+        <AudioControls ttsCtrl={ttsAudio} text={animal?.description || ''} />
         <div className={styles.names}>
           <h1 className={styles.title}>{animal?.common_name}</h1>
           <h3 className={styles.subtitle}>{animal?.scientific_name}</h3>
