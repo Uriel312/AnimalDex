@@ -15,12 +15,27 @@ const CardAnimal = ({ animal }: CardAnimalType) => {
         navigate(`/animalInfo/${animal.id}`)
     }
 
+    const getHostilityColor = () => {
+        if (animal.hostility_level == 'Inofensivo') {
+            return styles.green
+        } else if (animal.hostility_level == 'Moderadamente Peligroso') {
+            return styles.orange
+        } else {
+            return styles.red
+        }
+    }
+
     return (
         <>
             <div className={styles.card} onClick={open}>
-                <img src={animal?.imagen} alt="" />
+
+                <img className={`${styles.imagen} ${getHostilityColor()}`} src={animal?.imagen} alt={animal.common_name} />
+
                 <div className={styles.info}>
                     <div>
+                        <span className={`${styles.badge} ${getHostilityColor()}`}>
+                            {animal?.hostility_level}
+                        </span>
                         <h1 className={styles.title}>{animal?.common_name}</h1>
                         <p className={styles.subtitle}>{animal?.scientific_name}</p>
                         <p className={styles.subtitle}>{animal?.animal_category}</p>

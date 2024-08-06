@@ -6,18 +6,17 @@ import Animals from "./pages/animals/Animals";
 import AnimalInfo from "./pages/animal-info/AnimalInfo";
 
 function App() {
-
-
-
   return (
     <>
-      <Header></Header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/animals" element={<Animals />} />
-        <Route path="/animalInfo/:id" element={<AnimalInfo />} />
-        <Route path="/search" element={<Search />} />
-      </Routes>
+      <div className="container2">
+        <Header></Header>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/animals" element={<Animals />} />
+          <Route path="/animalInfo/:id" element={<AnimalInfo />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+      </div>
     </>
   )
 }

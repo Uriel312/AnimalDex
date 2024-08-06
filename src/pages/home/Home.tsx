@@ -22,13 +22,13 @@ const Home = () => {
         <p></p>
 
         <button onClick={goToAllAnimals}>
-          <MdOutlinePets size='40px' />
+          <MdOutlinePets size='60px' />
           <span>
             Todos los animales
           </span>
         </button>
         <button onClick={goToSearch}>
-          <MdOutlineSearch size='40px' />
+          <MdOutlineSearch size='60px' />
           <span>
             Buscar animal
           </span>

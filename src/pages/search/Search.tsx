@@ -29,8 +29,8 @@ const Search = () => {
       modal.open()
       const result = await getAnimalData(photo) as AnimalType
       if (result) {
-        result.imagen = photo
         result.id = result.scientific_name.toLocaleLowerCase()
+        result.imagen = photo
         await addAnimalToDB(result)
         modal.close()
         navigate(`/animalInfo/${result.id}`)
@@ -60,6 +60,7 @@ const Search = () => {
 
           }
         </div>
+
         <div className={styles.buttons}>
           <button className={styles.back} onClick={back} >
             <FaArrowLeftLong size={'25px'} />
