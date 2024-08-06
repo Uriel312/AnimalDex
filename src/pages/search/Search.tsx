@@ -27,7 +27,8 @@ const Search = () => {
       if (result) {
         result.imagen = photo
         result.id = result.scientific_name.toLocaleLowerCase()
-        addAnimalToDB(result)
+        await addAnimalToDB(result)
+        navigate(`/animalInfo/${result.id}`)
       }
     }
   }
