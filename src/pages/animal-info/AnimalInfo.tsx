@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getAnimalByID } from '../../db/db';
 import { AnimalType } from '../../types/Animal';
 import styles from './animal_info.module.css'
 import useTts from '../../hooks/useTts';
 import AudioControls from '../../components/audio-controls/AudioControls';
+import Badge from '../../components/badge/Badge';
 
 const AnimalInfo = () => {
   const { id } = useParams();
   const [animal, setAnimal] = useState<AnimalType | null>(null)
   const ttsAudio = useTts()
+  const navigate = useNavigate()
 
   const textSpeach = async (text: string) => {
     ttsAudio.play(text)
@@ -17,19 +19,28 @@ const AnimalInfo = () => {
 
   const getAnimal = async () => {
     const response = await getAnimalByID(id as string)
-
+    if(!response){
+      navigate('/animals')
+    }
     setAnimal(response)
   }
 
   const getHostilityColor = () => {
     if (animal?.hostility_level == 'Inofensivo') {
-      return styles.green
+      return 'green'
     } else if (animal?.hostility_level == 'Moderadamente Peligroso') {
-      return styles.orange
+      return 'orange'
     } else {
-      return styles.red
+      return 'red'
     }
   }
+
+  useEffect(() => {
+    getAnimal()
+    return () => {
+      ttsAudio.stop()
+    }
+  }, [])
 
   useEffect(() => {
     if (animal) {
@@ -37,38 +48,21 @@ const AnimalInfo = () => {
     }
   }, [animal])
 
-  useEffect(() => {
-    getAnimal()
-  }, [])
-
 
   return (
     <div className={styles.container}>
 
       <div className={styles.badges}>
-
-        <p className={`${styles.badge} ${styles.blue}`}>
-          {animal?.animal_category}
-        </p>
-
-        <p className={`${styles.badge} ${getHostilityColor()}`}>
-          {animal?.hostility_level}
-        </p>
-
+        <Badge text={animal?.animal_category || ''} color='royalblue' />
+        <Badge text={animal?.hostility_level || ''} color={getHostilityColor()} />
         {
           animal?.poison &&
-          <p className={`${styles.badge} ${styles.purple}`}>
-            Venenoso
-          </p>
+          <Badge text='Venenoso' color='purple' />
         }
-
         {
           animal?.dangerous_to_humans &&
-          <p className={`${styles.badge} ${styles.black}`}>
-            ¡Cuidado 💀!
-          </p>
+          <Badge text='¡Cuidado 💀!' color='black' />
         }
-
       </div>
 
 

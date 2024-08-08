@@ -14,7 +14,7 @@ const AnimalEmpty = () => {
   return (
     <div className={styles.container}>
       <h4>
-        Actualmente no tienes animales en tu lista.
+        Actualmente, no tienes animales en tu lista.
       </h4>
       <h2>
         ¡Empieza a descubrir y agregar algunos nuevos!

@@ -19,6 +19,10 @@ const useTts = (): UseTTSType => {
     const audio = new SpeechSynthesisUtterance(text)
     synth.speak(audio)
     setSpeaking(true)
+
+    audio.onend = () => {
+      setSpeaking(false)
+    };
   }
 
   return {
