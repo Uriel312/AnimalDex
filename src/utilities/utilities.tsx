@@ -12,10 +12,9 @@ export const dataURItoBlob = (dataURI: string) => {
   return new Blob([uint8Array], { type: mimeString });
 }
 
-
 export const resizeBase64Image = (base64String: string, maxWidth: number, maxHeight: number) => {
   return new Promise((resolve) => {
-    const imgBlob = dataURItoBlob(base64String); // Convertir base64 a Blob
+    const imgBlob = dataURItoBlob(base64String);
     Resizer.imageFileResizer(
       imgBlob,
       maxWidth,
@@ -24,7 +23,7 @@ export const resizeBase64Image = (base64String: string, maxWidth: number, maxHei
       100,
       0,
       (uri) => {
-        resolve(uri); // La imagen redimensionada en formato base64
+        resolve(uri);
       },
       'base64'
     );
