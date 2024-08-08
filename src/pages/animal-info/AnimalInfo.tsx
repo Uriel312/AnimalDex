@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getAnimalByID } from '../../db/db';
 import { AnimalType } from '../../types/Animal';
 import styles from './animal_info.module.css'
@@ -11,6 +11,7 @@ const AnimalInfo = () => {
   const { id } = useParams();
   const [animal, setAnimal] = useState<AnimalType | null>(null)
   const ttsAudio = useTts()
+  const navigate = useNavigate()
 
   const textSpeach = async (text: string) => {
     ttsAudio.play(text)
@@ -18,6 +19,9 @@ const AnimalInfo = () => {
 
   const getAnimal = async () => {
     const response = await getAnimalByID(id as string)
+    if(!response){
+      navigate('/animals')
+    }
     setAnimal(response)
   }
 

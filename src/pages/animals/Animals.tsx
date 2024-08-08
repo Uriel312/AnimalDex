@@ -38,7 +38,7 @@ const Animals = () => {
         {allAnimals.length > 0 &&
           <>
             <header>
-              <Input type="search" label="Buscar" onChange={searchAnimal} />
+              <Input type="search" label="Buscar:" onChange={searchAnimal} />
               <span>Animales registrados: {allAnimals.length} de ???</span>
             </header>
 

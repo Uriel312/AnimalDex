@@ -1,9 +1,13 @@
 .header {
   width: 100%;
   position: sticky;
-  background-color: #C62718;
+  background-color: var(--header-color);
   top: 0;
   z-index: 5;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
     width: 50px;

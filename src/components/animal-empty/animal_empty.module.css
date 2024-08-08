@@ -7,8 +7,8 @@
   text-align: center;
   gap: 20px;
   background-color: rgb(77, 76, 76);
-  margin: 40px;
-  border-radius: 10px;
+  width: 100%;
+  height:calc(100vh - 60px);
 
   h4 {
     font-size: 1.3rem;
