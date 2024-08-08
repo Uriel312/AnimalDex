@@ -1,10 +1,47 @@
 .container {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   gap: 20px;
   max-width: 1000px;
-  margin: auto;
+  margin: 20px auto;
+  width: 100%;
+
+  header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    padding: 0 20px;
+
+    span {
+      padding: 0px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      color: orangered;
+    }
+  }
+
+  .notFound {
+    background-color: tomato;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 90%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-weight: bold;
+      font-size: 30px;
+    }
+  }
 
   .grid {
     max-width: 100vw;
@@ -14,6 +51,6 @@
     justify-content: center;
     gap: 20px 40px;
     grid-template-columns: repeat(auto-fill, 350px);
-    margin: 20px auto;
+
   }
 }
