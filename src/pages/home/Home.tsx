@@ -1,24 +1,22 @@
-import { useNavigate } from 'react-router-dom'
+import useRouting from '../../hooks/useRouting';
 import styles from './home.module.css'
 import { MdOutlinePets, MdOutlineSearch } from "react-icons/md";
 
-
 const Home = () => {
 
-  const navigate = useNavigate()
+  const nav = useRouting()
 
   const goToSearch = () => {
-    navigate('/search')
+    nav.goTo('/search')
   }
 
   const goToAllAnimals = () => {
-    navigate('/animals')
+    nav.goTo('/animals')
   }
 
   return (
     <>
       <div className={styles.container}>
-
         <p>Descubre el mundo animal a través de tu cámara: captura criaturas reales y explora su fascinante información con nuestra app inspirada en la biodiversidad</p>
 
         <button onClick={goToAllAnimals}>

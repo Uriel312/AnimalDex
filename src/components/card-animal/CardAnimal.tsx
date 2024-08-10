@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom'
 import styles from './card_animal.module.css'
 import { AnimalType } from '../../types/Animal'
+import useRouting from '../../hooks/useRouting'
 
 interface CardAnimalType {
     animal: AnimalType
@@ -8,10 +8,10 @@ interface CardAnimalType {
 
 
 const CardAnimal = ({ animal }: CardAnimalType) => {
-    const navigate = useNavigate()
+    const nav = useRouting()
 
     const open = () => {
-        navigate(`/animalInfo/${animal.id}`)
+        nav.goTo(`/animalInfo/${animal.id}`)
     }
 
     const getHostilityColor = () => {

@@ -28,10 +28,6 @@ const Animals = () => {
     setAnimals(filter)
   }
 
-  console.log(animals, allAnimals)
-
-
-
   return (
     <>
       <div className={styles.container}>
@@ -41,7 +37,6 @@ const Animals = () => {
               <Input type="search" label="Buscar:" onChange={searchAnimal} />
               <span>Animales registrados: {allAnimals.length} de ???</span>
             </header>
-
             {
               animals.length > 0 ?
                 <div className={styles.grid}>{
@@ -54,10 +49,8 @@ const Animals = () => {
                   <span> "{search}" </span>
                 </p>
             }
-
           </>
         }
-
         {
           allAnimals.length == 0 &&
           <AnimalEmpty />

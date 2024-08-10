@@ -1,18 +1,17 @@
-import { useNavigate } from 'react-router-dom'
 import styles from './header.module.css'
+import useRouting from '../../hooks/useRouting'
 
 const Header = () => {
-
-  const navigation = useNavigate()
+  const nav = useRouting()
 
   const goToHome = () => {
-    navigation('/')
+    nav.goTo('/')
   }
 
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <img onClick={goToHome} src="/AnimalDex.png" alt="" />
+        <img onClick={goToHome} src="/AnimalDex.png" alt="AnimalDex Logo" />
         <h1 onClick={goToHome}>AnimalDex</h1>
       </div>
     </header>

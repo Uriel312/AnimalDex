@@ -1,9 +1,7 @@
-
 import { useRef, useState } from "react";
 import { Camera, CameraType } from "react-camera-pro";
 import styles from './search.module.css'
 import { FaCameraRotate, FaArrowLeftLong } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
 import { resizeBase64Image } from "../../utilities/utilities";
 import { getAnimalData } from "../../utilities/ia";
 import { addAnimalToDB } from "../../db/db";
@@ -11,15 +9,15 @@ import { AnimalType } from "../../types/Animal";
 import Modal from "../../components/modal/Modal";
 import useModal from "../../hooks/useModal";
 import ModalError from "../../components/modal-error/ModalError";
+import useRouting from "../../hooks/useRouting";
 
 const Search = () => {
   const modal = useModal(false)
   const modalError = useModal(false)
-
   const webcamRef = useRef<CameraType | null>(null);
-  const [numberOfCameras, setNumberOfCameras] = useState(2);
-  const navigate = useNavigate();
+  const [numberOfCameras, setNumberOfCameras] = useState<number>(0);
   const [image, setImage] = useState<string | null | undefined>(null)
+  const nav = useRouting()
 
   const takePhoto = async () => {
     if (webcamRef.current) {
@@ -40,15 +38,11 @@ const Search = () => {
           result.imagen = photo
           await addAnimalToDB(result)
           modal.close()
-          navigate(`/animalInfo/${result.id}`)
+          nav.goTo(`/animalInfo/${result.id}`)
         }
       }
       modal.close()
     }
-  }
-
-  const back = () => {
-    navigate(-1)
   }
 
   const changeCamera = () => {
@@ -67,7 +61,6 @@ const Search = () => {
   return (
     <>
       <div className={styles.container}>
-
         <div className={styles.camera}>
           {
             !image ?
@@ -75,11 +68,8 @@ const Search = () => {
               <img className={styles.img} src={image} alt="" />
           }
         </div>
-
-
-
         <div className={styles.buttons}>
-          <button className={styles.back} onClick={back} >
+          <button className={styles.back} onClick={nav.back} >
             <FaArrowLeftLong size={'25px'} />
           </button>
           <button className={styles.takePhoto} onClick={takePhoto}></button>
