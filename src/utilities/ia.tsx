@@ -7,15 +7,6 @@ const google = createGoogleGenerativeAI({
   baseURL: 'https://generativelanguage.googleapis.com/v1beta'
 });
 
-const conservationStatus = z.enum([
-  "Extinto",
-  "Extinto en Estado Silvestre",
-  "En Peligro Crítico",
-  "En Peligro",
-  "Vulnerable",
-  "Casi Amenazado",
-  "Preocupación Menor"
-]);
 
 const hostilityLevel = z.enum([
   "Inofensivo",
@@ -37,7 +28,6 @@ const diet = z.enum([
   "Micófago"
 ]);
 
-
 const schema = z.object({
   common_name: z.string(),
   scientific_name: z.string(),
@@ -51,7 +41,6 @@ const schema = z.object({
   behavior_description: z.string(),
   habitat: z.string(),
   description: z.string(),
-  conservation_status: conservationStatus,
   hostility_level: hostilityLevel,
   poison: z.boolean(),
   dangerous_to_humans: z.boolean(),
@@ -64,6 +53,7 @@ export async function getAnimalData(img: string) {
       temperature: 1,
       schema: schema,
       mode: 'json',
+      maxTokens: 1000,
       messages: [{
         role: 'user',
         content: [
